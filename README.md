@@ -1,19 +1,19 @@
 # Portfolio
-This repoistory lists the projects.
+A short description to my projects related to Data Analysis and Machine Learning.
 
 ## Data Analysis
-- [Analyze A/B Test Results]([DAND]analyze_ab_test_results_notebook.ipynb): Investigate the results of an A/B test run by an e-commerce website to conclude whether to use the new design of the website or not.<br>
+- [Analyze A/B Test Results](https://github.com/AMR-KELEG/Projects_Portfolio/blob/master/%5BDAND%5DAnalyze%20A%7CB%20Test%20Results/%5BDAND%5Danalyze_ab_test_results_notebook.ipynb): Investigate the results of an A/B test run by an e-commerce website to conclude whether to use the new design of the website or not.<br>
 This project is part of the Udacity's Data Analyst Nanodegree.<br>
 Tools: Jupyter Notebooks - Python 3 - pandas - numpy - statsmodels
-- [Investigate the no-showup Dataset]([DAND]investigate-a-dataset.ipynb): Kaggle's no-showup dataset is explored in order to find whether there is a dependancy between whether a patient shows-up in an appoinment and various attributes such as: patient age - period between Scheduling and appointment time.<br>
+- [Investigate the no-showup Dataset](https://github.com/AMR-KELEG/Projects_Portfolio/blob/master/%5BDAND%5DInvestigate%20the%20no-showup%20Dataset/%5BDAND%5Dinvestigate-a-dataset.ipynb): Kaggle's no-showup dataset is explored in order to find whether there is a dependancy between whether a patient shows-up in an appoinment and various attributes such as: patient age - period between Scheduling and appointment time.<br>
 Various plots are used to support the analysis process.<br>
 This project is part of the Udacity's Data Analyst Nanodegree.<br>
 Tools: Jupyter Notebooks - Python 3 - Matplotlib
-- [Explore Bike Share Data]([DAND]bike_share_analysis.ipynb): In this project, exploratory analysis is performed on data provided by Motivate, a bike-share system provider for many major cities in the United States.<br>
+- [Explore Bike Share Data](https://github.com/AMR-KELEG/Projects_Portfolio/blob/master/%5BDAND%5DExplore%20Bike%20Share%20Data/%5BDAND%5Dbike_share_analysis.ipynb): In this project, exploratory analysis is performed on data provided by Motivate, a bike-share system provider for many major cities in the United States.<br>
 The Data Analysis process is done from posing questions to drawing conclusions.<br>
 This project is part of the Udacity's Data Analyst Nanodegree.<br>
 Tools: Jupyter Notebooks - Python 3 - Matplotlib
-- [Explore Weather Trends]([DAND]explore_weather_trends.py): Pull average Temperature of Cairo,Egypt and the worldwide averate for the last 200 years and explore the changes and the general trends.<br>
+- [Explore Weather Trends](https://github.com/AMR-KELEG/Projects_Portfolio/blob/master/%5BDAND%5DExplore%20Weather%20Trends/%5BDAND%5Dexplore_weather_trends.py): Pull average Temperature of Cairo,Egypt and the worldwide averate for the last 200 years and explore the changes and the general trends.<br>
 This project is part of the Udacity's Data Analyst Nanodegree.<br>
 Tools: Python 3 - SQL
 
