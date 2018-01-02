@@ -18,9 +18,10 @@ This project is part of the Udacity's Data Analyst Nanodegree.<br>
 Tools: Python 3 - SQL
 
 ## Neural Networks
-- [Three Parity Problem](solveThreeParityProblem.m): Use neural networks to find the parity of three bits and investigate the effect of increasing the no. of hidden nodes on the output.<br>
+- [Three Parity Problem](%5BNN%5DThree%20Parity%20Problem/solveThreeParityProblem.m): Use neural networks to find the parity of three bits and investigate the effect of increasing the no. of hidden nodes on the output.<br>
 Tools: GNU Octave
-- [db-moon](solveDBmoonProblem.m): Use backpropagation to optimize the parameters of the values.
+- [Radial Basis Function Clustering](%5BNN%5DRadial%20Basis%20Functions/solveDBmoonProblem.m): Use backpropagation to optimize the parameters of the RBF<br>
+and investigate the effect of increasing the number of the means(RBFs) on the accuracy.
 Tools: GNU Octave
 
 ## Machine Learning
