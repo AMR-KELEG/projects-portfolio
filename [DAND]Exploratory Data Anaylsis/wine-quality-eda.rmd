@@ -1,0 +1,248 @@
+White Wine Attributes Analysis by Amr Mohamed
+========================================================
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, packages}
+# Load all of the packages that you end up using in your analysis in this code
+# chunk.
+
+# Notice that the parameter "echo" was set to FALSE for this code chunk. This
+# prevents the code from displaying in the knitted HTML output. You should set
+# echo=FALSE for all code chunks in your file, unless it makes sense for your
+# report to show the code that generated a particular plot.
+
+# The other parameters for "message" and "warning" should also be set to FALSE
+# for other code chunks once you have verified that each plot comes out as you
+# want it to. This will clean up the flow of your report.
+
+library(ggplot2)
+library(reshape2)
+library(gridExtra)
+```
+
+```{r echo=FALSE, Load_the_Data}
+# Load the Data
+wine_df <- read.csv('wineQualityWhites.csv')
+```
+
+# Dataset information
+Throughout this report, the White Wine Quality dataset will be analyzed.<br>
+The dataset contains 4,898 white wines with 11 variables on quantifying the 
+chemical properties of each wine.<br>
+At least 3 wine experts rated the quality of each wine,
+providing a rating between 0 (very bad) and 10 (very excellent).
+
+# Univariate Plots Section
+
+Let's start by understanding the different attributes of the dataset.<br>
+I will use basic histograms to discover the distributions of each attribute.
+
+```{r echo=FALSE, message=FALSE, fig.align='center', Univariate_Plots}
+ggplot(data = melt(subset(wine_df, select = -X)), mapping = aes(x = value)) + 
+  geom_histogram(bins = 20, color ='black', fill=I('#328484')) +
+  facet_wrap(~variable, scales = 'free_x')
+```
+```{r}
+summary(wine_df)
+```
+
+
+The special distribution of the residual sugar encourages further investigation.<br>
+
+```{r echo=FALSE, fig.align='center'}
+
+high_sugar_wine_df <- subset(x = wine_df, subset = residual.sugar > quantile(x = wine_df$residual.sugar, probs = 0.9))
+# ggplot(mapping = aes(x=quality), breaks=0:10) +
+#   geom_histogram(data = high_sugar_wine_df, binwidth = 1,
+#                  mapping = aes(y=..count../sum(..count..)),
+#                  alpha=0.5, color ='black', fill=I('#FF8484'),
+#                  show.legend=TRUE) +
+#   geom_histogram(data = wine_df, binwidth = 1,
+#                  mapping =aes(y=..count../sum(..count..)),
+#                  alpha=0.5, color ='black', fill=I('#328484'),
+#                  show.legend=TRUE) +
+#   coord_cartesian(xlim = c(0, 10)) +
+#   scale_x_continuous(breaks = seq(from=0, to = 10, by = 1)) +
+#   ylab('Proportion') +
+#   xlab('Quality of wine')
+
+p1 <- ggplot(mapping = aes(x=quality, y=..count../sum(..count..)), breaks=0:10) +
+  geom_histogram(data = high_sugar_wine_df, binwidth = 1,
+                 alpha=0.5, color ='black', fill=I('#FF8484'),
+                 show.legend=TRUE) +
+  coord_cartesian(xlim = c(0, 10)) +
+  scale_x_continuous(breaks = seq(from=0, to = 10, by = 1)) +
+  ylab('Proportion') +
+  xlab('Quality of wine') +
+  ggtitle('General Distribution of wine\'s quality') + 
+  theme(plot.title = element_text(size = 9, face = "bold", hjust = 0.5))
+
+p2 <- ggplot(breaks=0:10) +
+  geom_histogram(data = wine_df, mapping = aes(x=quality, y=..count../sum(..count..)), binwidth = 1,
+                 alpha=0.5, color ='black', fill=I('#328484')) +
+  scale_x_continuous(breaks = seq(from=0, to = 10, by = 1)) +
+  coord_cartesian(xlim = c(0, 10)) +
+  ylab('Proportion') +
+  xlab('Quality of wine') +
+  ggtitle('Distribution of High sugar residue wine\'s quality') + 
+  theme(plot.title = element_text(size = 9, face = "bold", hjust = 0.5))
+grid.arrange(p1, p2, nrow=1)
+```
+
+High sugar values doesn't seem to affect the quality. 
+
+```{r echo=FALSE, results='hide'}
+summary(wine_df$quality)
+sd(wine_df$quality)
+```
+
+# Univariate Analysis
+
+### Observations:
+* The quality of wine has integral values.
+* The alcohol attribute is long tailed and the distribution is nearly uniform.
+* The residual sugar values has an exponentially decaying distribution.
+* The distibution of wine's quality with higher residual sugar has similar distribution to the general distribution of the wine's quality.
+
+# Bivariate Plots Section
+
+```{r echo=FALSE, fig.align='center', Bivariate_Plots}
+# How to do it for scatter plots?
+ggplot(data = melt(data = subset(wine_df, select = -X), id.vars = 'quality'), mapping = aes(x = value, y = quality)) + 
+  geom_jitter(color ='black', fill=I('#328484'), alpha=aes(0.002)) +
+  facet_wrap(~variable, scales = 'free_x') +
+  ylab('Quality') +
+  xlab(label = '')
+```
+
+From the scatter plots, alcohol seems to be the most attribute that is related to the quality of the wine.<br>
+Alcohol is the property that affects the brain cells, disrubts the consciousness of drinkers and make them feel happier.<br>
+Thus, critics may prefer types of wine with higher alcohol contents.
+
+```{r echo=FALSE, fig.align='center'}
+ggplot(data = wine_df, mapping = aes(x=alcohol, y=quality)) +
+  geom_jitter(alpha = aes(0.01), color=I('#328484'), size=2.5) +
+  geom_smooth(method = 'lm', color=I('#889984')) +
+  xlab('Alcohol quantity') +
+  ylab('Quality')
+```
+
+Now, let's compute the correlation coefficients betweem the wine's quality and all the other attributes.
+
+```{r}
+cor(subset(wine_df, select = -c(X, quality)), y = wine_df$quality)
+```
+
+It is clear that there is a moderate correlation between the quality and the quantity of alcohol.<br>
+Other correlation coefficients show weak correltaion coffecients or no correlation at all.
+
+
+An obvious bivariate relation within the dataset is the free-total sulfur dioxide relation.
+```{r echo=FALSE, fig.align='center'}
+ggplot(data = wine_df, mapping = aes(x=free.sulfur.dioxide, y=total.sulfur.dioxide)) +
+  geom_point(alpha =aes(0.08)) +
+  coord_cartesian(xlim = c(0, 100)) +
+  geom_smooth(method = 'lm', color='black') +
+  xlab('Free sulfur dioxide') +
+  ylab('Total sulfur dioxide') + 
+  theme(axis.title.y = element_text(angle = 0, vjust = 0.5))
+
+```
+
+```{r echo=FALSE, results='hide'}
+cor(subset(wine_df, select = -c(X, quality)), y = wine_df$alcohol)
+```
+
+```{r echo=FALSE, results='hide', warning=FALSE, message=FALSE, fig.align='center'}
+ggplot(data = wine_df, mapping = aes(x = density, y = quality)) +
+  geom_jitter(alpha = aes(0.05)) +
+  geom_smooth(color= 'black') +
+  coord_cartesian(xlim = c(0.99, 1.005))
+```
+
+# Bivariate Analysis
+### Observations:
+* There is a moderate correlation between the quality and the quantity of alcohol.
+* There is an obvious bivariate relation within the dataset is the free-total sulfur dioxide relation.
+
+# Multivariate Plots Section
+
+```{r echo=FALSE, Multivariate_Plots}
+ggplot(data = wine_df, mapping = aes(x=alcohol, y=quality)) +
+  geom_jitter(aes(color=residual.sugar)) +
+  scale_color_gradient2(low="blue", high="black") +
+  geom_smooth(method = 'lm', color=I('#889984')) +
+  xlab('Alcohol quantity') +
+  ylab('Quality') +
+  theme_dark()
+
+fit <- lm(quality ~ residual.sugar + alcohol + density + pH + citric.acid + sulphates,
+          data=wine_df)
+summary(fit) # show results
+
+wine_df$pred <- predict(fit, wine_df)
+
+ggplot(data = wine_df, mapping = aes(x = pred, y = quality)) +
+  geom_jitter(alpha = aes(0.02))
+```
+
+# Multivariate Analysis
+
+### Observations:
+* Residual sugar has no clear effect on the relation between quality and alocohol contents.
+* The multiple regression model isn't effective for prediction of quality.
+
+# Final Plots and Summary
+
+### Plot One
+```{r echo=FALSE, fig.align='center', Plot_One}
+ggplot(data = wine_df, mapping = aes(x = factor(quality))) + 
+  geom_bar(color ='black', fill=I('#328484')) +
+  ylab('Count of wine samples') +
+  xlab('Quality') +
+  ggtitle('Distribution of wine\'s quality')
+```
+
+### Description One
+The quality of white wine has a normal distribution with a mean value = 5.878 and standard deviation = 0.8856386.
+
+### Plot Two
+```{r echo=FALSE, results='hide', fig.align='center', warning=FALSE, message=FALSE, Plot_Two}
+ggplot(data = wine_df, mapping = aes(x = density, y = quality)) +
+  geom_jitter(alpha = aes(0.05)) +
+  geom_smooth(color= 'black') +
+  coord_cartesian(xlim = c(0.99, 1.005)) +
+  xlab('Density (g / cm^3)') +
+  ylab('Quality') +
+  ggtitle('Effect of density on quality')
+```
+
+### Description Two
+The plot shows the effect of wine's density on its quality.<br>
+Wine with lower densities seem to get higher ratings.<br>
+Increasing the density of wine might make it unpleasent to drinkers.
+
+### Plot Three
+```{r echo=FALSE, Plot_Three}
+ggplot(data = wine_df, mapping = aes(x=alcohol, y=quality)) +
+  geom_jitter(alpha = aes(0.01), color=I('#328484'), size=2.5) +
+  geom_smooth(method = 'lm', color=I('#889984')) +
+  xlab('Alcohol quantity (% by volume)') +
+  ylab('Quality') +
+  ggtitle('Effect of alcohol on quality')
+```
+
+### Description Three
+The plot describes the effect of Alcohol on the wine's rating.<br>
+As mentioned before, alcohol seems to be the most attribute that is related to the quality of the wine.<br>
+Alcohol is the property that affects the brain cells, disrubts the consciousness of drinkers and make them feel happier.<br>
+Thus, critics may prefer types of wine with higher alcohol contents.
+
+# Reflection
+
+The white wine dataset is challenging as most of the attributes are chemical.<br>
+This fact makes intuitive explanations more difficult and requires deep understanding of these 
+attributes on the wine's quality.<br>
+More efforts could be done in exploring the inter-dependency between the different attributes.<br>
+Plotting the histograms of all the attributes was a good way to understand their distributions.<br>
+Additionally, Checking the correlation coefficients between quality and the rest of the attributes<br>
+supported the rest of the investigation results.
