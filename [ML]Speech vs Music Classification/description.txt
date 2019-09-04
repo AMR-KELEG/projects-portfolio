@@ -1,0 +1,33 @@
+The goal of this task is to classify an audio file whether it's music or speech.
+
+The final output should be "one" for speech and "zero" for music
+
+
+Data is organized as follows
+============================
+
+data
+├── test
+│   ├── music_wav
+│   └── speech_wav
+└── train
+    ├── music_wav
+    └── speech_wav
+
+
+=> the train directory contains about 60 wav files per each class to be used in training. Each wav file is 30 Secs (in total half an hour per class)
+
+=> the test  directory contains about  4 wav files per each class to be used in final testing not in development
+
+
+Hint:
+=====
+you can use the library 'librosa'
+1- read the wav files, use "librosa.load"
+2- extract MFCC features, use "librosa.feature.mfcc"
+
+note that MFCC is a 2D dimensional features
+
+
+Do you best in getting higher accuracy
+

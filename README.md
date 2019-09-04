@@ -27,6 +27,11 @@ This project is part of **Neural Networks Undergraduate Course (CSE 463) taught 
 Tools: GNU Octave
 
 ## Machine Learning
+- [Music or Speech](%5BML%5DSpeech%20vs%20Music%20Classification/%5BML%5DSpeech%20vs%20Music%20Classification.ipynb): Develop a model for classifying audio files into either music or speech.<br>
+This model was developed as part of a 1-hour technical task for a deep learning position.
+Data couldn't be shared since I don't have the licence to use it.
+Tools: Python 3 - Scikit-learn - Seaborn
+
 - [Maximum Aposteriori Classification](%5BML%5DMAP%20classification/MAP_classification.py): Apply MA classifcation to solve a simple 3D classification problem 
 and visualize the decision boundaries.<br>
 This project is part of **Selected Topics in System Engineering (Machine Learning) Undergraduate Course (CSE 465) taught at Faculty of Engineering - Ain Shams University**.<br>
