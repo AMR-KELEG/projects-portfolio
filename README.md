@@ -1,6 +1,13 @@
 # Portfolio
 A short description to my projects related to Data Analysis and Machine Learning.
 
+## Machine Learning Competitions (Kaggle / Zindi)
+- [Financial Inclusion in Africa](%5BZINDI%5DFinancial%20Inclusion%20in%20Africa/model.ipynb)
+In this binary classification task, One should implement a model to predict whether a person has a bank account or not given some information about the person.
+Position: 120 out of 643 contestants
+Contest: [URL](https://zindi.africa/competitions/financial-inclusion-in-africa/)
+Tools: Jupyter Notebooks - Python 3 - xgboost - pandas
+
 ## Data Analysis
 - [Analyze A/B Test Results](%5BDAND%5DAnalyze%20A%7CB%20Test%20Results/%5BDAND%5Danalyze_ab_test_results_notebook.ipynb): Investigate the results of an A/B test run by an e-commerce website to conclude whether to use the new design of the website or not.<br>
 This project is part of the **Udacity's Data Analyst Nanodegree**.<br>
