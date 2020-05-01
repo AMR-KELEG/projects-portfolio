@@ -2,21 +2,24 @@
 A short description to my projects related to Data Analysis and Machine Learning.
 
 ## Machine Learning Competitions (Kaggle / Zindi)
-- [To Vaccinate or Not to Vaccinate: It’s not a Question](%5BZINDI%5DFinancial%20Inclusion%20in%20Africa/model.ipynb)
+- [To Vaccinate or Not to Vaccinate: It’s not a Question](%5BZINDI%5DTo%20Vaccinate%20or%20Not%20to%20Vaccinate:%20It’s%20not%20a%20Question/)
 In this hackathon, a 3-class model is needed to determine whether the text is pro-vaccination, anti-vaccination or neutral.
 
-Trained model: https://drive.google.com/open?id=17NGDdUfn2nEEkgudsnndyFgNm3MZDJX8
+	- Trained model: https://drive.google.com/open?id=17NGDdUfn2nEEkgudsnndyFgNm3MZDJX8
+	- Position: 7 out of 130 contestants
+	- Contest: [URL](https://zindi.africa/hackathons/to-vaccinate-or-not-to-vaccinate-its-not-a-question/leaderboard)
+	- Tools: Jupyter Notebooks - Python 3 - BERT - transformers - Google Colab
 
-Position: 7 out of 130 contestants
-Contest: [URL](https://zindi.africa/hackathons/to-vaccinate-or-not-to-vaccinate-its-not-a-question/leaderboard)
-Tools: Jupyter Notebooks - Python 3 - BERT - transformers - Google Colab
-
-- [Financial Inclusion in Africa](%5BZINDI%5DFinancial%20Inclusion%20in%20Africa/model.ipynb)
+- [Financial Inclusion in Africa](%5BZINDI%5DFinancial%20Inclusion%20in%20Africa/model.ipynb):
 In this binary classification task, One should implement a model to predict whether a person has a bank account or not given some information about the person.
+	- Position: 120 out of 643 contestants
+	- Contest: [URL](https://zindi.africa/competitions/financial-inclusion-in-africa/)
+	- Tools: Jupyter Notebooks - Python 3 - xgboost - pandas
 
-Position: 120 out of 643 contestants
-Contest: [URL](https://zindi.africa/competitions/financial-inclusion-in-africa/)
-Tools: Jupyter Notebooks - Python 3 - xgboost - pandas
+## Kaggle kernels
+- [Covid-19 Bio-NER](https://www.kaggle.com/amrkeleg/fine-tuning-bert-models-for-bio-entity-recognition):
+A notebook that fine-tunes BERT-based models to work on token classification task (Name Entity Recognition).
+Tools: Jupyter Notebooks - Python 3 - transformers
 
 ## Data Analysis
 - [Analyze A/B Test Results](%5BDAND%5DAnalyze%20A%7CB%20Test%20Results/%5BDAND%5Danalyze_ab_test_results_notebook.ipynb): Investigate the results of an A/B test run by an e-commerce website to conclude whether to use the new design of the website or not.<br>
