@@ -2,7 +2,7 @@
 A short description to my projects related to Data Analysis and Machine Learning.
 
 ## Machine Learning Competitions (Kaggle / Zindi)
-- [To Vaccinate or Not to Vaccinate: It’s not a Question](%5BZINDI%5DTo%20Vaccinate%20or%20Not%20to%20Vaccinate:%20It’s%20not%20a%20Question/)
+- [To Vaccinate or Not to Vaccinate](%5BZINDI%5DTo%20Vaccinate%20or%20Not%20to%20Vaccinate/):
 In this hackathon, a 3-class model is needed to determine whether the text is pro-vaccination, anti-vaccination or neutral.
 
 	- Trained model: https://drive.google.com/open?id=17NGDdUfn2nEEkgudsnndyFgNm3MZDJX8
