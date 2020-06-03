@@ -16,6 +16,11 @@ In this binary classification task, One should implement a model to predict whet
 	- Contest: [URL](https://zindi.africa/competitions/financial-inclusion-in-africa/)
 	- Tools: Jupyter Notebooks - Python 3 - xgboost - pandas
 
+- [AWS DeepRacer Challenge](%5BRL%5DAWS%20DeepRacer%20Challenge/reward_function.py): DeepRacer is a 1/18 scale car trained using Reinforcement learning to navigate a race track using footage from a camera. AWS provides a way to train the RL model by providing a `reward function` that determines the reward for a given state of the car. The state of the car is determined by multiple parameters such as: speed, distance to the centerline of the track, current position of the car(x, y).
+	- Position: 193 out of 1291 contestants
+	- [The 3-lap demo for the model](https://www.youtube.com/watch?v=0A9EwAu3uDU)
+
+
 ## Kaggle kernels
 - [Covid-19 Bio-NER](https://www.kaggle.com/amrkeleg/fine-tuning-bert-models-for-bio-entity-recognition):
 A notebook that fine-tunes BERT-based models to work on token classification task (Name Entity Recognition).
